@@ -24,6 +24,20 @@ CACHE_PORT=
 
 RESPONSE_CACHE_TIMEOUT=
 
+For testing, you should create the **.env.test* file by getting a reference from **.env.test.example** file.
+
+KERNEL_CLASS=
+
+APP_SECRET=
+
+SYMFONY_DEPRECATIONS_HELPER=
+
+PANTHER_APP_ENV=
+
+PANTHER_ERROR_SCREENSHOT_DIR=
+
+DATABASE_URL=
+
 ##  Application Startup Bash Script
 If you have **docker-compose** service, you can initialize the app by the following command:
 
