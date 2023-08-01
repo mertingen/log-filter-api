@@ -38,6 +38,19 @@ PANTHER_ERROR_SCREENSHOT_DIR=
 
 DATABASE_URL=
 
+## cURL Command Documentation - Retrieving Count from Localhost
+Description:
+This document provides details on how to use the cURL command to retrieve a count from the localhost server. The request will be made to the endpoint '127.0.0.1:8080/count', and it will fetch the count for a specific service named 'USER-SERVICE'. Additionally, the 'Response-Cache' header will be utilized in the request with a value of '1'.
+
+cURL Command:
+```bash
+curl --location --globoff '127.0.0.1:8080/count?serviceNames[]=USER-SERVICE' \
+--header 'Response-Cache: 1'
+```
+
+'Response-Cache' header specifies that it will only work when there are query string values present in the request.
+And, you will get a response header named 'Response-Cache-Timeout'. Thus, that response will be cached until this time.
+
 ##  Application Startup Bash Script
 If you have **docker-compose** service, you can initialize the app by the following command:
 
