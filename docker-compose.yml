@@ -1,0 +1,55 @@
+version: '3'
+services:
+  db_cont:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    networks:
+      - log_filter_api
+
+  cache_cont:
+    build:
+      context: ./cache
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+    networks:
+      - log_filter_api
+
+  queue_cont:
+    build:
+      context: ./queue
+      dockerfile: Dockerfile
+    ports:
+      - "6380:6380"
+    networks:
+      - log_filter_api
+
+  app_cont:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/app
+    depends_on:
+      - db_cont
+      - cache_cont
+      - queue_cont
+    networks:
+      - log_filter_api
+
+  web_cont:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - app_cont
+    networks:
+      - log_filter_api
+
+networks:
+  log_filter_api:

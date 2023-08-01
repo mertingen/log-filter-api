@@ -1,0 +1,6 @@
+var/cache/
+var/cache/*
+/vendor/
+
+/.idea/
+/.vscode/
